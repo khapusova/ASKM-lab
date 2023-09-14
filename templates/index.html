@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Lab 1</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages%}
+            <div class="modal-body">
+                {% for message in messages%}
+                  <p>{{message}}</p>
+                {%endfor%}
+            </div>
+        {%endif%}
+    {%endwith%}
+    <div>
+        <h1>Laboratory 1</h1>
+        <h1>Khapusova Diana/KM-02</h1>
+        <hr><br>
+        <form method="POST" class="flex_center">
+            <label for="select_option">Select size:</label>
+            <select id="select_option" name="select_option">
+                {% for value in values %}
+                    <option {% if value == n %}selected{% endif %} value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit" name="btn">
+        </form>
+        <div class="flex_center">
+         <h2>A = </h2>
+         <form method="POST">
+           {% for i in range(n) %}
+               <div class="flex_center">
+                   {% for j in range(n + 1) %}
+                     <input
+                             id="input_{{ i }}_{{ j }}"
+                             name="input_{{ i }}_{{ j }}"
+                             type="text"
+                             {% if len_matr != 0 %}value="{{ matrix[i][j] }}"{% endif %}
+                            {% if j == n %}class="B_matr{% endif %}"
+                     />
+                   {% endfor %}
+               </div>
+           {% endfor %}
+           <input class="flex_center" type="submit" value="Find solutions" name="btn">
+        </form>
+        <h2> <span> = B </span></h2>
+        </div>
+    </div>
+    {% if len_ans != 0%}
+      <div class="flex_center column">
+      <h3>Answers:</h3>
+       {% for i in range(len_ans) %}
+           <h3>x{{ i + 1 }} = {{ answers[i] }}</h3>
+       {% endfor %}
+      </div>
+    {%endif%}
+    {% if len_sums != 0%}
+      <div class="flex_center column">
+      <h3>Checking:</h3>
+       {% for i in range(len_sums) %}
+           <h3>{{ sums[i] }} = {{ matrix[i][-1] }}</h3>
+       {% endfor %}
+      </div>
+    {%endif%}
+</body>
+</html>
