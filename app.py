@@ -1,8 +1,11 @@
 from flask import *
 import numpy as np
 from labs.lab1 import gaussian_elimination
+<<<<<<< HEAD
 from labs.lab2 import integral, derivative
 
+=======
+>>>>>>> 0d231ae06451685b6c4d21fca306279ea46384fd
 app = Flask(__name__)
 
 selected_value = 4
@@ -14,12 +17,15 @@ matrix = np.array([[3, 1, -1, 2, 6],
 
 errors, sums, answers = [], [], []
 
+<<<<<<< HEAD
 #lab 2
 
 func_text, func_text2 = "1/(x*(x**2 + 0.25)**(1/2))", "-2 * log((0.5 + (x**2 + 0.25)**(1/2))/x)"
 from_inp, to_inp, n, x, h = 1, 2, 50, 1, 0.02
 answer_int, answer_der, delta_int, delta_der, table_integral = False, False, False, False, []
 
+=======
+>>>>>>> 0d231ae06451685b6c4d21fca306279ea46384fd
 @app.route('/lab1', methods=['GET', 'POST'])
 def lab1():
     global selected_value, matrix, errors, answers, sums
@@ -55,6 +61,7 @@ def lab1():
                             len_ans=len(answers), sums=sums, len_sums=len(sums))
 
 
+<<<<<<< HEAD
 
 
 
@@ -89,5 +96,7 @@ def lab2():
                            answer_der=answer_der, x=x, h=h, delta_der=delta_der, delta_int = delta_int, errors=errors)
 
 
+=======
+>>>>>>> 0d231ae06451685b6c4d21fca306279ea46384fd
 if __name__ == '__main__':
     app.run()

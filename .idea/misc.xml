@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (flaskProject)" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (labaKhimyuk)" project-jdk-type="Python SDK" />
+>>>>>>> 0d231ae06451685b6c4d21fca306279ea46384fd
 </project>

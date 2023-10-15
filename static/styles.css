@@ -101,6 +101,7 @@ input[type=submit] {
     flex-direction: column;
 }
 
+<<<<<<< HEAD
 .lab2-form {
     display: flex;
     align-items: center;
@@ -111,6 +112,8 @@ input[type=submit] {
         width: 500px;
     }
 
+=======
+>>>>>>> 0d231ae06451685b6c4d21fca306279ea46384fd
 
 @keyframes opacityOn {
     0% {
