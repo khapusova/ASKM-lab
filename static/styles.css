@@ -1,0 +1,125 @@
+body {
+    background-image: url("./background.jpg");
+    backdrop-filter: blur(30px);
+}
+
+h1 {
+    font-size: 50px;
+    font-family: Bahnschrift, sans-serif;
+    margin: 10px 0px;
+    display: inline-flex;
+    justify-content: center;
+    color: azure;
+    width: 100%;
+}
+
+h2 {
+    color: azure;
+    font-size: 50px;
+    font-family: Bahnschrift, sans-serif;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+h3 {
+    color: azure;
+    font-size: 30px;
+    text-align: center;
+    font-family: Bahnschrift, sans-serif;
+}
+
+.center {
+    margin: auto;
+}
+
+.flex_center {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+}
+input, label, select, option {
+    width: 100px;
+    padding: 5px;
+    margin: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(100px);
+    border: 5px solid rgba(255, 255, 255, .5);
+    border-radius: 15px;
+    font-size: 20px;
+    color: azure;
+    font-family: Bahnschrift, sans-serif;
+}
+
+label {
+    border: none;
+    white-space: nowrap;
+    align-items: center;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.B_matr {
+    border-color: darkorange;
+    margin-left: 100px;
+}
+
+span {
+    margin-left: 10px !important;
+    color: darkorange !important;
+}
+
+option {
+    color: black;
+}
+
+input[type=submit] {
+  background-color: darkslateblue;
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 150px;
+  font-family: Bahnschrift, sans-serif;
+  text-decoration: none;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.modal-body {
+    position: absolute;
+    border-radius: 30px;
+    left: 2.5%;
+    top: 2.5%;
+    color: azure;
+    font-size: 35px;
+    padding: 10px;
+    font-family: Bahnschrift, sans-serif;
+    background-color: darkred;
+    opacity: 0;
+    animation: opacityOn 7s normal forwards;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.lab2-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lab2-form input {
+        width: 500px;
+    }
+
+
+@keyframes opacityOn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Lab 1</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages%}
+            <div class="modal-body">
+                {% for message in messages%}
+                  <p>{{message}}</p>
+                {%endfor%}
+            </div>
+        {%endif%}
+    {%endwith%}
+    <div>
+        <h1>Laboratory 2</h1>
+        <h1>Khapusova Diana/KM-02</h1>
+        <hr><br>
+        <form method="post" class="lab2-form">
+            <div class="flex_center">
+                <label for="function_inp" style="white-space: normal">Function to integrate: </label>
+                <input type="text" id="function_inp" name="function_inp" value="{{ func_text }}" />
+            </div>
+            <div class="flex_center">
+                <label for="function_inp2" style="white-space: normal">Function to get derivative: </label>
+                <input type="text" id="function_inp2" name="function_inp2" value="{{ func_text2 }}" />
+            </div>
+            <div class="flex_center">
+                <div method="post" class="lab2-form" style="width: 50%; align-self: start;">
+                    <div class="flex_center">
+                        <label for="from_inp">From: </label>
+                        <input type="text" id="from_inp" name="from_inp" value="{{ from_inp }}" style="width: 100px;" />
+                    </div>
+                    <div class="flex_center">
+                        <label for="to_inp">To: </label>
+                        <input type="text" id="to_inp" name="to_inp" value="{{ to_inp }}" style="width: 100px;" />
+                    </div>
+                    <div class="flex_center">
+                        <label for="n">n: </label>
+                        <input type="text" id="n" name="n" value="{{ n }}" style="width: 100px;" />
+                    </div>
+                </div>
+                <div class="lab2-form" style="width: 50%; align-self: end;">
+                    <div class="flex_center">
+                        <label for="x">x: </label>
+                        <input type="text" id="x" name="x" value="{{ x }}" style="width: 100px;" />
+                    </div>
+                    <div class="flex_center">
+                        <label for="h">h: </label>
+                        <input type="text" id="h" name="h" value="{{ h }}" style="width: 100px;" />
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Submit" name="btn">
+        </form>
+
+       {% if answer_int%}
+           <div class="flex_center column" style="width: 50%">
+                    <h3>Derivative = {{ answer_der }} +- {{ delta_der }}</h3>
+                    <h3>Integral = {{ answer_int }} +- {{ delta_int }}</h3>
+           </div>
+           <div class="flex_center" style="width: 50%">
+               <div class="flex_center column">
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 350px;">i</h3>
+                        <h3 style="margin-right: 40px; width: 350px;">x1</h3>
+                        <h3 style="margin-right: 40px; width: 350px;">y1</h3>
+                    </div>
+                    {% for row in table_integral %}
+                        <div class="flex_center">
+                            {% for value in row %}
+                                <h3 style="margin-right: 40px; width: 350px;">{{ value }}</h3>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+              </div>
+          </div>
+       {%endif%}
+    </div>
+</body>
+</html>
