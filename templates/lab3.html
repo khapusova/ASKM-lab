@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 3</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages %}
+            <div class="modal-body">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div>
+        <h1>Laboratory 3</h1>
+        <h1>Khapusova Diana/KM-02</h1>
+        <hr><br>
+        <form method="post" class="lab3-form">
+            <div class="flex_center">
+                <label for="y_input disabled" style="width: auto;">y(</label>
+                <input disabled type="text" value="{{ x_start }}" id="xfy" name="xfy" style="width: 50px; margin-right: 0px; margin-left: 0px;" />
+                <label style="width: auto;"> ):</label>
+                <input disabled type="text" id="y_input disabled" name="y_input disabled" value="{{ y_start }}" />
+            </div>
+            <div class="flex_center">
+                <label for="yp_input disabled" style="width: auto;">y'(</label>
+                <input disabled type="text" id="xfyp" value="{{ x_start }}" name="xfyp" style="width: 50px; margin-right: 0px; margin-left: 0px;" />
+                <label style="width: auto;"> ):</label>
+                <input disabled type="text" id="yp_input disabled" name="yp_input disabled"value="{{ yp_start }}"  />
+            </div>
+            <div class="flex_center">
+                <label for="from">From:</label>
+                <input disabled type="text" id="from" name="from" value="{{ from_v }}" />
+            </div>
+            <div class="flex_center">
+                <label for="to">To:</label>
+                <input disabled type="text" id="to" name="to" value="{{ to }}" />
+            </div>
+            <div class="flex_center">
+                <label for="h">h:</label>
+                <input disabled type="text" id="h" name="h" value="{{ h }}" />
+            </div>
+            <div class="flex_center">
+                <label style="margin-left: -200px; margin-right: 200px;" for="differential_eq">Differential equation:</label>
+                <input disabled type="text" id="lefteq" name="lefteq" style="width: 200px;" value="{{ fleft }}"/>
+                <label style="width: auto;">=</label>
+                <input disabled type="text" id="righteq" name="righteq" value="{{ fright }}"/>
+            </div>
+            <input style="display: block; margin: auto;" type="submit" value="Submit" name="btn">
+        </form>
+
+        {% if results %}
+            <div class="flex_center" style="width: 50%">
+                <div class="flex_center column">
+                    {% for row in results %}
+                        <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 700px;">{{ row }}</h3>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
