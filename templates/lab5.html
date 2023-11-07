@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 5</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages %}
+            <div class="modal-body">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+     <div>
+            <h1>Laboratory 5</h1>
+            <h1>Khapusova Diana/KM-02</h1>
+            <hr><br>
+            <form method="post" class="lab5-form">
+                <div class="flex_center">
+                    <div class="flex_center column" style="align-items: center;">
+                        <div class="flex_center">
+                            <h3 class="l5-cell" >P1</h3>
+                            <h3 class="l5-cell" >P2</h3>
+                            <h3 class="l5-cell" >P3</h3>
+                        </div>
+                    {% for i in range(length1) %}
+                        <div class="flex_center">
+                            <h3>S{{ i + 1 }}</h3>
+                            {% for p in ps[i] %}
+                                <input class="l5-cell" type="text" value="{{ p }}">
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <div class="flex_center column" style="align-items: center;">
+                        <div class="flex_center">
+                            <h3 class="l5-cell" style="width: 150px;" >Запаси ресурсів</h3>
+                        </div>
+                        {% for i in range(length1) %}
+                            <input class="l5-cell" type="text" value="{{ bs[i] }}" />
+                        {% endfor %}
+                    </div>
+                    <div class="flex_center" style="align-items: center;">
+                        {% for i in range(length2) %}
+                        <div class="flex_center column">
+                            <h3>C(P{{ i + 1 }})</h3>
+                            <input class="l5-cell" type="text" value="{{ cs[i] }}" />
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+              <input style="display: block; margin: auto;" type="submit" value="Submit" name="btn" />
+            </form>
+
+            {% if results %}
+                <div class="flex_center" style="width: 50%">
+                    <div class="flex_center column">
+                        {% for row in results %}
+                            <div class="flex_center">
+                            <h3 style="margin-right: 40px; width: 700px;">{{ row }}</h3>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+     </div>>
+</body>
+</html>

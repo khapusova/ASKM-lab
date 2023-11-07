@@ -3,6 +3,9 @@ import numpy as np
 from labs.lab1 import gaussian_elimination
 from labs.lab2 import integral, derivative
 from labs.lab3 import get_results_l3
+from labs.lab4 import mns
+from labs.lab5 import get_solution
+from labs.lab6 import transp_default, transp_with_limits
 
 app = Flask(__name__)
 
@@ -26,7 +29,52 @@ x_start_l3, y_start_l3, yp_start_l3 = 0, 0, 0
 from_l3, to_l3, h_l3 = 0, 0.2, 0.02
 fl3_left, f_l3_right = "y'' - 5y' + 6y", "e^x"
 isSubmitted = False
+results3 = False
 
+#lab 4
+results4 = False
+
+#lab 5
+results5 = False
+c = [6, 5, 5]
+# Визначення коефіцієнтів обмежень
+A = [
+    [2, 1, 1],
+    [1, 1, 1],
+    [0, 4, 2],
+    [3, 0, 1]
+]
+# Визначення правих частин обмежень
+b = [25, 14, 19, 24]
+
+
+#lab6
+
+C6 = np.array([
+    [10, 17, 9, 20, 30],
+    [15, 4, 24, 26, 26],
+    [22, 24, 30, 27, 29],
+    [25, 12, 11, 24, 23]
+])
+a6 = np.array([15, 15, 19, 11])
+b6 = np.array([9, 24, 9, 9, 9])
+
+C_l = np.array([
+    [7, 19, 7, 12, 18],
+    [17, 11, 7, 13, 11],
+    [1, 13, 19, 18, 12],
+    [8, 14, 11, 3, 11]
+])
+
+D_l = np.array([
+    [20, 6, 15, 22, 25],
+    [2, 5, 2, 3, 4],
+    [20, 1, 3, 15, 8],
+    [40, 5, 6, 2, 10]
+])
+a_l = np.array([80, 12, 38, 45])
+b_l = np.array([75, 10, 20, 40, 30])
+res1, res2, f1, f2 = False, False, False, False
 
 @app.route('/lab1', methods=['GET', 'POST'])
 def lab1():
@@ -99,18 +147,53 @@ def lab2():
 
 @app.route('/lab3', methods=['GET', 'POST'])
 def lab3():
-    global x_start_l3, y_start_l3, yp_start_l3, from_l3, to_l3, h_l3, fl3_left, f_l3_right, isSubmitted, errors
+    global x_start_l3, y_start_l3, yp_start_l3, from_l3, to_l3, h_l3, fl3_left, f_l3_right, isSubmitted, errors, results3
     try:
         if request.method == 'POST':
             isSubmitted = True
-            results = get_results_l3()
+            results3 = get_results_l3()
             return render_template('lab3.html', x_start=x_start_l3, y_start=y_start_l3, yp_start=yp_start_l3,
-                                   from_v=from_l3, to=to_l3, h=h_l3, fleft=fl3_left, fright=f_l3_right, results = results, errors=errors)
+                                   from_v=from_l3, to=to_l3, h=h_l3, fleft=fl3_left, fright=f_l3_right, results = results3, errors=errors)
     except Exception as e:
         errors = [e]
     return render_template('lab3.html', x_start=x_start_l3, y_start=y_start_l3, yp_start=yp_start_l3,
-        from_v=from_l3, to=to_l3, h=h_l3, fleft=fl3_left, fright=f_l3_right, results = results, errors=errors)
+        from_v=from_l3, to=to_l3, h=h_l3, fleft=fl3_left, fright=f_l3_right, results = results3, errors=errors)
 
+
+
+
+@app.route('/lab4', methods=['GET', 'POST'])
+def lab4():
+    global results4
+    if request.method == 'POST':
+        results4 = mns()
+        reslts = [np.round(j, 6) for j in [i for i in results4]]
+        return render_template('lab4.html', results=reslts, isResults=True)
+    return render_template('lab4.html')
+
+@app.route('/lab5', methods=['GET', 'POST'])
+def lab5():
+    global results5, A, b, c, errors
+    try:
+        if request.method == 'POST':
+            results5 = get_solution(A, c, b)
+            return render_template('lab5.html', ps=A, cs=c, bs=b, length1=len(A), length2=len(c), results=results5, errors=errors)
+    except Exception as e:
+        errors = [e]
+    return render_template('lab5.html', ps=A, cs=c, bs=b, length1=len(A), length2=len(c), results=results5, errors=errors)
+
+
+@app.route('/lab6', methods=['GET', 'POST'])
+def lab6():
+    global res1, res2, f1, f2
+    if request.method == 'POST':
+        print("fsdadas")
+        res1, f1 = transp_default()
+        res2, f2 = transp_with_limits()
+        return render_template('lab6.html', a=a6, C=C6, b=b6, Dl=D_l, Cl=C_l, al=a_l, bl=b_l, results2=res2, f2r=f2,
+                               results1=res1, f1r=f1)
+    return render_template('lab6.html', a=a6, C=C6, b=b6, Dl=D_l, Cl=C_l, al=a_l, bl=b_l, results2=res2, f2r=f2,
+                               results1=res1, f1r=f1)
 
 if __name__ == '__main__':
     app.run()

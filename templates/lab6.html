@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 6</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages %}
+            <div class="modal-body">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+     <div>
+        <h1>Laboratory 6</h1>
+        <h1>Khapusova Diana/KM-02</h1>
+        <br />
+     <form id="l6"method="post" >
+        <h3>Транспортна задача:</h3>
+        <div class="flex_center">
+            <div class="flex_center">
+                <h3 class="l5-cell">C = </h3>
+                 <div class="flex_center column">
+                     {% for row in C %}
+                         <div class="flex_center">
+                        {% for r in row %}
+                             <h3 class="l5-cell">{{ r }}</h3>
+                        {% endfor %}
+                         </div>
+                     {% endfor %}
+                 </div>
+            </div>
+            <div class="flex_center">
+                <h3 class="l5-cell">a = </h3>
+                 <div class="flex_center">
+                {% for r in a %}
+                     <h3 class="l5-cell">{{ r }}</h3>
+                {% endfor %}
+                 </div>
+            </div>
+
+            <div class="flex_center">
+                <h3 class="l5-cell">b = </h3>
+                 <div class="flex_center">
+                {% for r in b %}
+                     <h3 class="l5-cell">{{ r }}</h3>
+                {% endfor %}
+                 </div>
+            </div>
+        </div>
+
+            <input style="display: block; margin: auto; width: 200px;"  type="submit" value="Знайти розв'язок" />
+         </form>
+      {% if f1r %}
+                <div class="flex_center" style="width: 50%; margin-top: 40px; margin-bottom: 40px;">
+                    <div class="flex_center column">
+                        {% for row in results1 %}
+                            <div class="flex_center">
+                            {% for r in row %}
+                            <h3 style="margin: 10px">{{ r }}</h3>
+                            {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h3>f = {{ f1r }}</h3>
+            {% endif %}
+      <form id="l61"method="post" >
+      <h3>Транспортна задача з обмеженнями на пропускну здатність:</h3>
+        <div class="flex_center">
+            <div class="flex_center">
+                <h3 class="l5-cell">C = </h3>
+                 <div class="flex_center column">
+                     {% for row in Cl %}
+                         <div class="flex_center">
+                        {% for r in row %}
+                             <h3 class="l5-cell">{{ r }}</h3>
+                        {% endfor %}
+                         </div>
+                     {% endfor %}
+                 </div>
+            </div>
+            <div class="flex_center">
+                <h3 class="l5-cell">D = </h3>
+                 <div class="flex_center column">
+                     {% for row in Dl %}
+                         <div class="flex_center">
+                        {% for r in row %}
+                             <h3 class="l5-cell">{{ r }}</h3>
+                        {% endfor %}
+                         </div>
+                     {% endfor %}
+                 </div>
+            </div>
+            <div class="flex_center">
+                <h3 class="l5-cell">a = </h3>
+                 <div class="flex_center">
+                {% for r in al %}
+                     <h3 class="l5-cell">{{ r }}</h3>
+                {% endfor %}
+                 </div>
+            </div>
+
+            <div class="flex_center">
+                <h3 class="l5-cell">b = </h3>
+                 <div class="flex_center">
+                {% for r in bl %}
+                     <h3 class="l5-cell">{{ r }}</h3>
+                {% endfor %}
+                 </div>
+            </div>
+        </div>
+            <input style="display: block; margin: auto; width: 200px;"  type="submit" value="Знайти розв'язок" />
+         </form>
+          {% if f2r %}
+                <div class="flex_center" style="width: 50%;  margin-top: 40px; margin-bottom: 40px;">
+                    <div class="flex_center column">
+                        {% for row in results2 %}
+                            <div class="flex_center">
+                            {% for r in row %}
+                            <h3 style="margin: 10px">{{ r }}</h3>
+                            {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h3>f = {{ f2r }}</h3>
+            {% endif %}
+     </div>
+
+</body>
+</html>

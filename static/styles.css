@@ -123,3 +123,10 @@ input[type=submit] {
         opacity: 0;
     }
 }
+
+.l5-cell {
+    width: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+}

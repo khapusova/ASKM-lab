@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 4</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    {% with messages = errors %}
+        {% if messages %}
+            <div class="modal-body">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div>
+        <h1>Laboratory 4</h1>
+        <h1>Khapusova Diana/KM-02</h1>
+        <hr><br>
+        <form method="post" class="lab4-form">
+            <div class="flex_center">
+                <label for="y_input disabled" style="width: auto;">start x:</label>
+                <input disabled type="text" value="[1; 2]" id="xfy" name="xfy" style="width: 50px; margin-right: 0px; margin-left: 0px;" />
+            </div>
+            <div class="flex_center">
+                <label style="margin-left: -200px; margin-right: 200px;" for="from">Parameter for the Sven Algorithm:</label>
+                <input disabled type="text" id="from" name="from" value="0.01" />
+            </div>
+            <div class="flex_center">
+                <label for="to">Epsilon:</label>
+                <input disabled type="text" id="to" name="to" value="0.000001" />
+            </div>
+            <div class="flex_center">
+                <label for="h">h:</label>
+                <input disabled type="text" id="h" name="h" value="0.01" />
+            </div>
+            <div class="flex_center">
+                <label style="margin-left: -200px; margin-right: 200px;" for="differential_eq">Function:</label>
+                <input disabled type="text" id="lefteq" name="lefteq" style="width: 200px;" value="x1**2 - x1*x2 + x2**2"/>
+            </div>
+            <input style="display: block; margin: auto;" type="submit" value="Submit" name="btn">
+        </form>
+
+        {% if isResults %}
+            <div class="flex_center column">
+                <div class="flex_center">
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 200px;">i</h3>
+                     </div>
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 200px;">x1</h3>
+                     </div>
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 200px;">x2</h3>
+                     </div>
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 200px;">f(x1,x2)</h3>
+                     </div>
+                    <div class="flex_center">
+                        <h3 style="margin-right: 40px; width: 200px;">grad_norm</h3>
+                     </div>
+                </div>
+                {% for row in results %}
+                    <div class="flex_center">
+                        {% for val in row %}
+                            <div class="flex_center">
+                                <h3 style="margin-right: 40px; width: 200px;">{{ val }}</h3>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                </div>
+        {% endif %}
+    </div>
+</body>
+</html>
